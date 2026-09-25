@@ -34,6 +34,14 @@ Values below are percentages transcribed from [arXiv:2511.15807v1](https://arxiv
 
 ### Classical attacks · Table 1
 
+[![Table 1: full classical-attack ablations on MNIST and EMNIST, with weak and strong attack settings, F1 and precision](assets/paper/table-1-classical-attacks.png)](assets/paper/table-1-classical-attacks.png)
+
+*Original paper table. Click the image for full resolution.*
+
+<details>
+<summary>Read the results as text</summary>
+
+
 Selected higher-strength settings, comparing no defense with the full **TopoAE + Reformer + Auxiliary + warm-up** configuration. Each cell is **F1 / precision**. The paper also includes lower-strength settings and intermediate ablations.
 
 | Attack | Dataset | No defense | Full pipeline with warm-up |
@@ -47,7 +55,17 @@ Selected higher-strength settings, comparing no defense with the full **TopoAE +
 
 C&W uses a confidence parameter `c`; FGSM and PGD use perturbation budget `ε`. Improvements are not monotonic across all ablations: on EMNIST under PGD/FGSM, the Reformer stage can outperform the final warm-up configuration.
 
+</details>
+
 ### Adaptive attacks · Table 2
+
+[![Table 2: EOT, EOT plus BPDA, and BPDA results on MNIST and EMNIST, with attack success rate, F1 and precision](assets/paper/table-2-adaptive-attacks.png)](assets/paper/table-2-adaptive-attacks.png)
+
+*Original paper table. Click the image for full resolution.*
+
+<details>
+<summary>Read the results as text</summary>
+
 
 EOT evaluates transformations/randomness; BPDA approximates the backward pass through the defense. Each cell is **ASR ↓ / F1 ↑ / precision ↑**.
 
@@ -62,7 +80,17 @@ EOT evaluates transformations/randomness; BPDA approximates the backward pass th
 
 The EOT result is strong, but BPDA alone remains a substantial weakness: defended ASR is 81.14% on MNIST and 84.46% on EMNIST. Robustness depends on the evaluated attack and threat model.
 
+</details>
+
 ### OCR under FAWA · Table 3
+
+[![Table 3: FAWA results for CRNN, Rosetta, STAR-Net, RARE and TRBA, with attack success rate, character accuracy and precision](assets/paper/table-3-ocr-fawa.png)](assets/paper/table-3-ocr-fawa.png)
+
+*Original paper table. Click the image for full resolution.*
+
+<details>
+<summary>Read the results as text</summary>
+
 
 Each cell is **ASR ↓ / character accuracy ↑ / character precision ↑**. Character accuracy is not whole-word accuracy.
 
@@ -75,6 +103,24 @@ Each cell is **ASR ↓ / character accuracy ↑ / character precision ↑**. Cha
 | TRBA | Attention | 99.83 / 46.68 / 44.26 | 60.75 / 80.26 / 80.81 |
 
 For example, Rosetta’s ASR decreases by **55.75 percentage points**, while TRBA’s character accuracy increases by **33.58 percentage points**. These are absolute differences calculated from Table 3, not relative percentage improvements.
+
+</details>
+
+## Visualizations from the paper
+
+### Figure 2 · Topological latent space
+
+[![Figure 2: topological latent visualizations for MNIST on the left and EMNIST on the right](assets/paper/figure-2-latent-visualizations.png)](assets/paper/figure-2-latent-visualizations.png)
+
+The paper visualizes the learned representations for MNIST and EMNIST. Colors distinguish classes; the EMNIST representation is more entangled, consistent with its greater class diversity. This is a qualitative visualization, rather than an additional accuracy metric.
+
+### Figure 3 · Grad-CAM before and after reformation
+
+[![Figure 3: Grad-CAM panels for unperturbed input, reformed clean output, adversarial input and reformed adversarial output, retaining the original prediction labels and confidence values](assets/paper/figure-3-grad-cam.png)](assets/paper/figure-3-grad-cam.png)
+
+Panels (a)–(b) compare the clean example before and after reformation; panels (c)–(d) compare its adversarial counterpart. The true character is “i”. These are the paper’s Grad-CAM visualizations, showing how the highlighted regions and predictions change for this example.
+
+*Tables 1–3 and Figures 2–3 are reproduced directly from [the original paper](https://arxiv.org/pdf/2511.15807). Click any image for full resolution. [Asset provenance](assets/paper/SOURCES.md). Figures and tables © 2026 Association for the Advancement of Artificial Intelligence.*
 
 ## Getting started
 
